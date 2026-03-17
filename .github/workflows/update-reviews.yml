@@ -5,7 +5,7 @@ on:
     # 22:00 UTC corresponds to 00:00 (Midnight) Israel Time
     - cron: "0 22 * * *"
   workflow_dispatch:
-
+ 
 jobs:
   update-reviews:
     runs-on: ubuntu-latest
