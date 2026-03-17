@@ -2,7 +2,8 @@ name: 🔄 עדכון ביקורות גוגל אוטומטי
 
 on:
   schedule:
-    - cron: "0 6 * * *"
+    # 22:00 UTC corresponds to 00:00 (Midnight) Israel Time
+    - cron: "0 22 * * *"
   workflow_dispatch:
 
 jobs:
