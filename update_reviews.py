@@ -95,36 +95,38 @@ def save_data(h: str, all_reviews: list):
         }, f, ensure_ascii=False, indent=2)
 
 def update_html(html_path: str, reviews: list, place_data: dict):
-    with open(html_path, encoding="utf-8") as f:
+    with open(html_path, "r", encoding="utf-8") as f:
         content = f.read()
 
-    # --- עדכון כרטיסי ביקורות ---
-    new_cards = build_carousel_html(reviews)
-    # מחפש את התגית הפותחת והסוגרת בדיוק
-    pattern = r'(<div id="reviews-track"[^>]*>).*?(</div>\s*<!--\s*end reviews\s*-->)'
-    replacement = r'\1' + "\n" + new_cards + "\n        " + r'\2'
-    new_content = re.sub(pattern, replacement, content, flags=re.DOTALL)
+    # יצירת ה-HTML החדש של הכרטיסיות
+    new_cards_html = build_carousel_html(reviews)
+    
+    # מנגנון החלפה בטוח: מחפש את הדיב ודואג להחליף את כל מה שבתוכו
+    # המבנה: <div id="reviews-track"> ... תוכן ישן ... </div>
+    pattern = r'(<div id="reviews-track"[^>]*>)(.*?)(</div>)'
+    
+    # החלפה תוך שמירה על התגיות הפותחות והסוגרות
+    new_content = re.sub(pattern, r'\1\n' + new_cards_html + r'\n\3', content, flags=re.DOTALL)
 
-    # אם הפטרן לא נמצא — פשוט משתמשים ב-placeholder פשוט
-    if new_content == content:
-        pattern2 = r'(<div id="reviews-track"[^>]*>).*?(</div>)'
-        new_content = re.sub(pattern2, r'\1' + "\n" + new_cards + "\n        " + r'\2', content, count=1, flags=re.DOTALL)
-
-    # --- עדכון דירוג ---
+    # עדכון נתוני דירוג כלליים (Rating)
     avg_rating = place_data.get("rating", 0)
     total_reviews = place_data.get("user_ratings_total", len(reviews))
 
+    # עדכון המספר הגדול של הדירוג
     new_content = re.sub(
         r'(<div class="rating-num">)[^<]*(</div>)',
         r'\g<1>' + str(avg_rating) + r'\g<2>',
         new_content
     )
+    
+    # עדכון הטקסט של "מבוסס על X ביקורות"
     new_content = re.sub(
         r'מבוסס על \d+ ביקורות[^<]*',
         f'מבוסס על {total_reviews} ביקורות בגוגל',
         new_content
     )
 
+    # כתיבה סופית לקובץ - דורס את הישן
     with open(html_path, "w", encoding="utf-8") as f:
         f.write(new_content)
 
@@ -137,12 +139,17 @@ def main():
         sys.exit(1)
 
     print("Fetching reviews from Google...")
-    place_data = fetch_reviews(api_key, place_id)
-    new_from_google = place_data.get("reviews", [])
+    try:
+        place_data = fetch_reviews(api_key, place_id)
+        new_from_google = place_data.get("reviews", [])
+    except Exception as e:
+        print(f"Error fetching reviews: {e}")
+        sys.exit(1)
 
     stored_data = load_data()
     all_reviews = stored_data.get("all_reviews", [])
 
+    # מניעת כפילויות
     existing_ids = {f"{r.get('author_name')}_{r.get('time')}" for r in all_reviews}
     added_count = 0
     for r in new_from_google:
@@ -151,17 +158,19 @@ def main():
             all_reviews.append(r)
             added_count += 1
 
+    # מיון לפי זמן (חדש ביותר למעלה)
     all_reviews.sort(key=lambda x: x.get("time", 0), reverse=True)
 
+    # בדיקה אם יש שינוי בתוכן לפני שמעדכנים את ה-HTML
     new_hash = calculate_hash(all_reviews)
     if new_hash == stored_data.get("hash"):
-        print("No new reviews.")
+        print("No change in reviews content. Skipping HTML update.")
         sys.exit(0)
 
-    print(f"New reviews added: {added_count}. Total: {len(all_reviews)}")
+    print(f"New reviews added: {added_count}. Total in carousel: {len(all_reviews)}")
     update_html(HTML_FILE, all_reviews, place_data)
     save_data(new_hash, all_reviews)
-    print("Done!")
+    print("Process completed successfully!")
 
 if __name__ == "__main__":
     main()
