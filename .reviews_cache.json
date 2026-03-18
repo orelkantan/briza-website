@@ -1,7 +1,19 @@
 {
-  "hash": "e2f70f8cb8a306e5eca860decd6c6fc8",
-  "updated": "2026-03-18T14:16:55.527480",
+  "hash": "a454800d5e2dfe6a343efb83fabdae91",
+  "updated": "2026-03-18T15:19:26.417531",
   "all_reviews": [
+    {
+      "author_name": "Orel Kantan",
+      "author_url": "https://www.google.com/maps/contrib/112323664807369780164/reviews",
+      "language": "iw",
+      "original_language": "iw",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocIlqB_spUgX5TWDRlC4lQgOHO0qh3Ds4ddMyBxD5heKNaD5FPk=s128-c0x00000000-cc-rp-mo",
+      "rating": 5,
+      "relative_time_description": "בשבוע האחרון",
+      "text": "מקצוען תותח",
+      "time": 1773847058,
+      "translated": false
+    },
     {
       "author_name": "Moti Israel",
       "author_url": "https://www.google.com/maps/contrib/106411172146621689882/reviews",
