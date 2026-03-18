@@ -165,7 +165,7 @@ def main():
         sys.exit(0)
 
     # 6. שמירה ועדכון
-    print(f"🆕 נוספו {added_count} ביקורות חדשות. סה"כ בארכיון: {len(all_reviews)}")
+    print(f"New reviews added: {added_count}. Total: {len(all_reviews)}")
     update_html(HTML_FILE, all_reviews, place_data)
     save_data(new_hash, all_reviews)
     print("🎉 העדכון הושלם בהצלחה!")
