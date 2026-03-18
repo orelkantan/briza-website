@@ -122,7 +122,7 @@ def update_html(html_path: str, reviews: list, place_data: dict):
     avg_rating = place_data.get("rating", 0)
     total_reviews = place_data.get("user_ratings_total", len(reviews))
     
-    content = re.sub(r'(<div class="rating-num">)[^<]+(</div>)', rf'\1{avg_rating}\2', content)
+    content = re.sub(r'(<div class="rating-num">)[^<]+(</div>)', r'\g<1>' + str(avg_rating) + r'\g<2>', content)
     content = re.sub(r'מבוסס על \d+ ביקורות[^<]*', f'מבוסס על {total_reviews} ביקורות בגוגל', content)
 
     with open(html_path, "w", encoding="utf-8") as f:
