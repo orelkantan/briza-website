@@ -4802,7 +4802,7 @@ function initDynamicCarousel() {
 
     function updatePosition() {
         const cardWidth = cards[0].offsetWidth + 20; // רוחב כרטיס + מרווח
-        track.style.transform = `translateX(${index * cardWidth}px)`;
+        track.style.transform = translateX(-${index * cardWidth}px);
     }
 }
 
