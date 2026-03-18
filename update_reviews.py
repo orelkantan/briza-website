@@ -1,11 +1,4 @@
 #!/usr/bin/env python3
-"""
-update_reviews.py (Accumulative Version)
-----------------------------------------
-מושך ביקורות מ-Google Places API, ממזג אותן עם ביקורות קיימות (כדי לא לאבד מידע),
-ומעדכן את קובץ ה-HTML אוטומטית.
-"""
-
 import os
 import re
 import sys
@@ -14,22 +7,20 @@ import hashlib
 import requests
 from datetime import datetime
 
-# ── הגדרות ──────────────────────────────────────────────────────────────────
-HTML_FILE     = "index.html"           # שם קובץ האתר
-REVIEWS_CACHE = ".reviews_cache.json"    # קאש ששומר את כל הביקורות אי פעם
+HTML_FILE     = "index.html"
+REVIEWS_CACHE = ".reviews_cache.json"
 
-# ── עזרים ───────────────────────────────────────────────────────────────────
 def relative_time_he(unix_ts: int) -> str:
-    now   = datetime.utcnow().timestamp()
-    diff  = int(now - unix_ts)
-    days  = diff // 86400
-    if days < 1: return "היום"
-    if days < 7: return f"לפני {days} ימים" if days > 1 else "לפני יום"
+    now  = datetime.utcnow().timestamp()
+    diff = int(now - unix_ts)
+    days = diff // 86400
+    if days < 1:  return "היום"
+    if days < 7:  return f"לפני {days} ימים" if days > 1 else "לפני יום"
     if days < 14: return "לפני שבוע"
     if days < 30:
         weeks = days // 7
         return f"לפני {weeks} שבועות"
-    if days < 60: return "לפני חודש"
+    if days < 60:  return "לפני חודש"
     if days < 365:
         months = days // 30
         return f"לפני {months} חודשים"
@@ -83,7 +74,6 @@ def build_carousel_html(reviews: list) -> str:
     return "\n".join(cards)
 
 def calculate_hash(reviews: list) -> str:
-    """יוצר מזהה ייחודי למצב הנוכחי של כל הביקורות"""
     key = json.dumps(
         [{"id": r.get("author_name","") + str(r.get("time",0))} for r in reviews],
         ensure_ascii=False, sort_keys=True
@@ -91,17 +81,15 @@ def calculate_hash(reviews: list) -> str:
     return hashlib.md5(key.encode()).hexdigest()
 
 def load_data():
-    """טוען את כל ההיסטוריה מהקובץ"""
     if os.path.exists(REVIEWS_CACHE):
         with open(REVIEWS_CACHE, "r", encoding="utf-8") as f:
             return json.load(f)
     return {"hash": "", "all_reviews": []}
 
 def save_data(h: str, all_reviews: list):
-    """שומר את המאגר המעודכן"""
     with open(REVIEWS_CACHE, "w", encoding="utf-8") as f:
         json.dump({
-            "hash": h, 
+            "hash": h,
             "updated": datetime.utcnow().isoformat(),
             "all_reviews": all_reviews
         }, f, ensure_ascii=False, indent=2)
@@ -110,43 +98,51 @@ def update_html(html_path: str, reviews: list, place_data: dict):
     with open(html_path, encoding="utf-8") as f:
         content = f.read()
 
-    # עדכון הביקורות
+    # --- עדכון כרטיסי ביקורות ---
     new_cards = build_carousel_html(reviews)
-    content = re.sub(
-        r".*?",
-        f"\n{new_cards}\n        ",
-        content, flags=re.DOTALL
-    )
+    # מחפש את התגית הפותחת והסוגרת בדיוק
+    pattern = r'(<div id="reviews-track"[^>]*>).*?(</div>\s*<!--\s*end reviews\s*-->)'
+    replacement = r'\1' + "\n" + new_cards + "\n        " + r'\2'
+    new_content = re.sub(pattern, replacement, content, flags=re.DOTALL)
 
-    # עדכון ציון ומספר ביקורות
+    # אם הפטרן לא נמצא — פשוט משתמשים ב-placeholder פשוט
+    if new_content == content:
+        pattern2 = r'(<div id="reviews-track"[^>]*>).*?(</div>)'
+        new_content = re.sub(pattern2, r'\1' + "\n" + new_cards + "\n        " + r'\2', content, count=1, flags=re.DOTALL)
+
+    # --- עדכון דירוג ---
     avg_rating = place_data.get("rating", 0)
     total_reviews = place_data.get("user_ratings_total", len(reviews))
-    
-    content = re.sub(r'(<div class="rating-num">)[^<]+(</div>)', r'\g<1>' + str(avg_rating) + r'\g<2>', content)
-    content = re.sub(r'מבוסס על \d+ ביקורות[^<]*', f'מבוסס על {total_reviews} ביקורות בגוגל', content)
+
+    new_content = re.sub(
+        r'(<div class="rating-num">)[^<]*(</div>)',
+        r'\g<1>' + str(avg_rating) + r'\g<2>',
+        new_content
+    )
+    new_content = re.sub(
+        r'מבוסס על \d+ ביקורות[^<]*',
+        f'מבוסס על {total_reviews} ביקורות בגוגל',
+        new_content
+    )
 
     with open(html_path, "w", encoding="utf-8") as f:
-        f.write(content)
+        f.write(new_content)
 
-# ── Main Logic ──────────────────────────────────────────────────────────────
 def main():
-    api_key = os.environ.get("GOOGLE_API_KEY", "").strip()
+    api_key  = os.environ.get("GOOGLE_API_KEY", "").strip()
     place_id = os.environ.get("PLACE_ID", "").strip()
 
     if not api_key or not place_id:
-        print("❌ חסרים משתני סביבה.")
+        print("Missing env vars: GOOGLE_API_KEY / PLACE_ID")
         sys.exit(1)
 
-    # 1. משיכת נתונים חדשים מגוגל
-    print(f"🔍 מושך ביקורות אחרונות מגוגל...")
+    print("Fetching reviews from Google...")
     place_data = fetch_reviews(api_key, place_id)
     new_from_google = place_data.get("reviews", [])
 
-    # 2. טעינת המאגר הקיים (הארכיון)
     stored_data = load_data()
     all_reviews = stored_data.get("all_reviews", [])
 
-    # 3. מיזוג - הוספת רק כאלו שלא קיימות
     existing_ids = {f"{r.get('author_name')}_{r.get('time')}" for r in all_reviews}
     added_count = 0
     for r in new_from_google:
@@ -155,20 +151,17 @@ def main():
             all_reviews.append(r)
             added_count += 1
 
-    # 4. מיון מהחדש לישן
     all_reviews.sort(key=lambda x: x.get("time", 0), reverse=True)
 
-    # 5. בדיקה אם יש צורך בעדכון
     new_hash = calculate_hash(all_reviews)
     if new_hash == stored_data.get("hash"):
-        print("ℹ️ אין ביקורות חדשות להוסיף.")
+        print("No new reviews.")
         sys.exit(0)
 
-    # 6. שמירה ועדכון
     print(f"New reviews added: {added_count}. Total: {len(all_reviews)}")
     update_html(HTML_FILE, all_reviews, place_data)
     save_data(new_hash, all_reviews)
-    print("🎉 העדכון הושלם בהצלחה!")
+    print("Done!")
 
 if __name__ == "__main__":
     main()
