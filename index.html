@@ -4772,6 +4772,42 @@ function smoothScrollToContact(e) {
 }
 
 </style>
+<script>
+// פונקציה שמפעילה מחדש את הקרוסלה אחרי שהביקורות נטענו
+function initDynamicCarousel() {
+    const track = document.getElementById('reviews-track');
+    if (!track) return;
 
+    const cards = track.querySelectorAll('.review-card');
+    const nextBtn = document.querySelector('.carousel-button.next');
+    const prevBtn = document.querySelector('.carousel-button.prev');
+    
+    let index = 0;
+
+    if (nextBtn && prevBtn) {
+        nextBtn.addEventListener('click', () => {
+            if (index < cards.length - 1) {
+                index++;
+                updatePosition();
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (index > 0) {
+                index--;
+                updatePosition();
+            }
+        });
+    }
+
+    function updatePosition() {
+        const cardWidth = cards[0].offsetWidth + 20; // רוחב כרטיס + מרווח
+        track.style.transform = `translateX(${index * cardWidth}px)`;
+    }
+}
+
+// הפעלה כעבור שנייה כדי לוודא שהביקורות כבר הוזרקו
+setTimeout(initDynamicCarousel, 1000);
+</script>
 </body>
 </html>
