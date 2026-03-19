@@ -1142,7 +1142,7 @@
     position: fixed;
     bottom: 32px;
     left: 32px;
-    z-index: 200;
+    z-index: 1200;
     display: flex;
     flex-direction: column;
     gap: 14px;
@@ -2003,6 +2003,7 @@
   </a>
   <ul class="nav-links">
     <li><a href="javascript:void(0)" onclick="smoothScrollTo('services', event)">שירותים</a></li>
+    <li><a href="javascript:void(0)" onclick="smoothScrollTo('about', event)">על בריזה</a></li>
     <li><a href="javascript:void(0)" onclick="smoothScrollTo('products', event)">מוצרים</a></li>
     <li><a href="javascript:void(0)" onclick="smoothScrollTo('why', event)">למה אנחנו</a></li>
     <li><a href="javascript:void(0)" onclick="smoothScrollTo('reviews', event)">חוות דעת</a></li>
@@ -2104,7 +2105,7 @@
     </div>
 
     <div id="articlesGrid" style="display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:24px;">
-      <!-- Placeholder articles — replace with real content -->
+      <!-- 2 published articles -->
       <div class="art-card" data-cat="shabbat">
         <div class="art-emoji">✡️</div>
         <div class="art-cat-tag">מתקני שבת</div>
@@ -2112,27 +2113,7 @@
         <p class="art-excerpt">מה ההבדל בין מיני-בר רגיל למיני-בר שבת, למה צריך אישור הלכתי ואיך בוחרים נכון...</p>
         <div class="art-footer">
           <span class="art-read">5 דקות קריאה</span>
-          <span class="art-coming">בקרוב ›</span>
-        </div>
-      </div>
-      <div class="art-card" data-cat="soda">
-        <div class="art-emoji">🫧</div>
-        <div class="art-cat-tag">מתקני סודה</div>
-        <h3 class="art-title">מדריך מקיף לבחירת מכשיר סודה</h3>
-        <p class="art-excerpt">השוואה בין הדגמים המובילים בשוק, מה חשוב לבדוק לפני הרכישה ואיך לחסוך בעלויות...</p>
-        <div class="art-footer">
-          <span class="art-read">7 דקות קריאה</span>
-          <span class="art-coming">בקרוב ›</span>
-        </div>
-      </div>
-      <div class="art-card" data-cat="minbar">
-        <div class="art-emoji">💧</div>
-        <div class="art-cat-tag">מיני-בר</div>
-        <h3 class="art-title">מיני-בר ביתי — השוואת הדגמים המובילים</h3>
-        <p class="art-excerpt">Strauss, Aquatec, Spirit — מה ההבדלים, מה מתאים לך ומה שווה כל שקל...</p>
-        <div class="art-footer">
-          <span class="art-read">6 דקות קריאה</span>
-          <span class="art-coming">בקרוב ›</span>
+          <a href="https://wa.me/97236000311?text=שלום!%20אשמח%20לשמוע%20עוד%20על%20מיני-בר%20שבת" target="_blank" style="font-size:0.8rem; font-weight:700; color:var(--teal); text-decoration:none;">קרא עוד ›</a>
         </div>
       </div>
       <div class="art-card" data-cat="maintenance">
@@ -2142,34 +2123,25 @@
         <p class="art-excerpt">פעולות פשוטות שכל אחד יכול לעשות בבית כדי למנוע תקלות ולחסוך בעלויות תיקון...</p>
         <div class="art-footer">
           <span class="art-read">4 דקות קריאה</span>
-          <span class="art-coming">בקרוב ›</span>
+          <a href="https://wa.me/97236000311?text=שלום!%20אשמח%20לשמוע%20טיפים%20לתחזוקה" target="_blank" style="font-size:0.8rem; font-weight:700; color:var(--teal); text-decoration:none;">קרא עוד ›</a>
         </div>
       </div>
-      <div class="art-card" data-cat="filter">
-        <div class="art-emoji">🚿</div>
-        <div class="art-cat-tag">מסנני מים</div>
-        <h3 class="art-title">מתי מחליפים פילטר ואיך יודעים שהגיע הזמן</h3>
-        <p class="art-excerpt">סימנים שכדאי להכיר, כמה זה עולה ואיך לא ליפול על חברות שמוכרות פילטרים מיותרים...</p>
+      <!-- 1 coming soon card -->
+      <div class="art-card" data-cat="soda" style="opacity:0.65; pointer-events:none;">
+        <div class="art-emoji">🫧</div>
+        <div class="art-cat-tag">מתקני סודה</div>
+        <h3 class="art-title">מדריך מקיף לבחירת מכשיר סודה</h3>
+        <p class="art-excerpt">השוואה בין הדגמים המובילים בשוק ואיך לחסוך בעלויות...</p>
         <div class="art-footer">
-          <span class="art-read">3 דקות קריאה</span>
-          <span class="art-coming">בקרוב ›</span>
-        </div>
-      </div>
-      <div class="art-card" data-cat="buy">
-        <div class="art-emoji">🛒</div>
-        <div class="art-cat-tag">מדריך רכישה</div>
-        <h3 class="art-title">שכירות מול קנייה — מה משתלם יותר?</h3>
-        <p class="art-excerpt">ניתוח עלות-תועלת מלא שיעזור לך להחליט אם לקנות מכשיר או להשכיר מחברה...</p>
-        <div class="art-footer">
-          <span class="art-read">5 דקות קריאה</span>
-          <span class="art-coming">בקרוב ›</span>
+          <span class="art-read">7 דקות קריאה</span>
+          <span style="font-size:0.8rem; font-weight:700; color:var(--text-light); background:rgba(43,188,200,0.1); padding:3px 10px; border-radius:20px;">בהכנה</span>
         </div>
       </div>
     </div>
 
     <div style="text-align:center; margin-top:48px;">
       <p style="color:var(--text-mid); font-size:0.95rem; margin-bottom:16px;">רוצה שנכתוב על נושא מסוים?</p>
-      <a href="https://wa.me/972587711882?text=שלום!%20אשמח%20לקרוא%20מאמר%20על..." target="_blank" class="btn-primary" style="display:inline-flex;">💬 הצע נושא</a>
+      <a href="https://wa.me/97236000311?text=שלום!%20אשמח%20לקרוא%20מאמר%20על..." target="_blank" class="btn-primary" style="display:inline-flex;">💬 הצע נושא</a>
     </div>
   </div>
 </section>
@@ -2179,19 +2151,19 @@
   <div class="hero-content">
     <div class="hero-badge">
       <div class="hero-badge-dot"></div>
-      מוסמך משמרת השבת ✓
+      שירות ישיר מהטכנאי — ללא מוקדים, ללא ביורוקרטיה
     </div>
     <h1 class="hero-title">
-      מים<br>
-      <span class="teal">שזורמים</span><br>
-      איתך
+      מערכות מים<br>
+      <span class="teal">שמתוכננות</span><br>
+      נכון
     </h1>
     <p class="hero-sub">
-      טכנאי מיני-בר ומערכות סודה מקצועיים.<br>
-      תיקון, התקנה ושדרוג — מהיר, אמין, ונקי.
+      מים קרים, חמים וסודה לבית, לעסק ולמוסד —<br>
+      עם התאמה אישית, ניסיון מעשי מהשטח ושירות אמיתי.
     </p>
     <div class="hero-actions">
-      <a href="https://wa.me/972587711882?text=היי%20בריזה!%20אשמח%20לקבל%20שירות" target="_blank" class="btn-primary">
+      <a href="https://wa.me/97236000311?text=היי%20בריזה!%20אשמח%20לקבל%20שירות" target="_blank" class="btn-primary">
         💬 שלח הודעה בוואטסאפ
       </a>
       <a href="tel:036000311" class="btn-secondary">
@@ -2200,8 +2172,8 @@
     </div>
     <div class="hero-stats">
       <div class="stat-item">
-        <div class="stat-num">8.6</div>
-        <div class="stat-label">דירוג לקוחות</div>
+        <div class="stat-num">5.0<span style="font-size:1.4rem;">★</span></div>
+        <div class="stat-label">דירוג גוגל</div>
       </div>
       <div class="stat-item">
         <div class="stat-num">500+</div>
@@ -2233,6 +2205,53 @@
       <path class="wave-animate" d="M0,20 C240,60 480,0 720,20 C960,40 1200,10 1440,30 L1440,60 L0,60 Z" opacity="0.5"/>
       <path class="wave-animate-2" d="M0,35 C300,10 600,50 900,25 C1150,5 1300,45 1440,20 L1440,60 L0,60 Z"/>
     </svg>
+  </div>
+</section>
+
+<!-- ===== ABOUT MOSHE ===== -->
+<section id="about" style="background: var(--cream); padding: 70px 6%;">
+  <div style="max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 2fr; gap:60px; align-items:center;">
+    <div style="display:flex; flex-direction:column; align-items:center; gap:20px;">
+      <div style="width:180px; height:180px; border-radius:50%; background:linear-gradient(135deg, var(--teal-pale), var(--teal-light)); display:flex; align-items:center; justify-content:center; font-size:6rem; box-shadow:0 20px 60px rgba(43,188,200,0.2); border:3px solid rgba(43,188,200,0.3);">👨‍🔧</div>
+      <div style="text-align:center;">
+        <div style="font-family:'Heebo',sans-serif; font-size:1.3rem; font-weight:800; color:var(--text-dark);">משה חיים גבאי</div>
+        <div style="font-size:0.9rem; color:var(--teal-dark); font-weight:600; margin-top:4px;">מייסד בריזה | טכנאי מוסמך</div>
+      </div>
+    </div>
+    <div>
+      <div class="section-tag">מי עומד מאחורי בריזה</div>
+      <h2 class="section-title">לא עוד מתקין —<br><span class="teal">מומחה שמבין לעומק</span></h2>
+      <p style="font-size:1.05rem; color:var(--text-mid); line-height:1.8; margin-top:20px;">
+        בריזה נבנתה על תפיסה פשוטה: לקוח לא צריך מכשיר מדף, הוא צריך <strong>פתרון שמתאים בדיוק לצורך שלו</strong>.
+        <br><br>
+        לאורך שנים של עבודת שטח — בבתים, בבתי כנסת, בעסקים ובמוסדות — פיתחתי הבנה הנדסית ומעשית של מערכות מים שמעטים בתחום מגיעים אליה. אני מטפל בתקלות שאחרים לא פותרים, ומתאים מערכות שבאמת עובדות לאורך זמן.
+        <br><br>
+        הלקוחות שלי נשארים איתי שנים — לא כי אין ברירה, אלא כי הם יודעים שיש כאן מישהו שבאמת אכפת לו.
+      </p>
+      <div style="display:flex; gap:24px; margin-top:28px; flex-wrap:wrap;">
+        <div style="display:flex; align-items:center; gap:10px; background:white; padding:12px 20px; border-radius:12px; box-shadow:0 4px 16px rgba(43,188,200,0.1); border:1px solid rgba(43,188,200,0.15);">
+          <span style="font-size:1.4rem;">🏆</span>
+          <div>
+            <div style="font-weight:700; font-size:0.9rem; color:var(--text-dark);">ניסיון מעשי</div>
+            <div style="font-size:0.78rem; color:var(--text-mid);">מאות התקנות ותיקונים</div>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px; background:white; padding:12px 20px; border-radius:12px; box-shadow:0 4px 16px rgba(43,188,200,0.1); border:1px solid rgba(43,188,200,0.15);">
+          <span style="font-size:1.4rem;">✡️</span>
+          <div>
+            <div style="font-weight:700; font-size:0.9rem; color:var(--text-dark);">מוסמך משמרת השבת</div>
+            <div style="font-size:0.78rem; color:var(--text-mid);">בתוקף עד 26.10.2026</div>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px; background:white; padding:12px 20px; border-radius:12px; box-shadow:0 4px 16px rgba(43,188,200,0.1); border:1px solid rgba(43,188,200,0.15);">
+          <span style="font-size:1.4rem;">📍</span>
+          <div>
+            <div style="font-weight:700; font-size:0.9rem; color:var(--text-dark);">רמת גן, ת"א והמרכז</div>
+            <div style="font-size:0.78rem; color:var(--text-mid);">שירות באותו יום</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -2285,31 +2304,38 @@
       <h2 class="section-title">מקצועיות שאפשר<br><span class="teal">לסמוך עליה</span></h2>
       <div class="why-list">
         <div class="why-item reveal">
-          <div class="why-check">⚡</div>
+          <div class="why-check">🎯</div>
           <div class="why-text">
-            <h4>מענה מהיר</h4>
-            <p>מגיעים אליך ביום הפנייה — אין צורך לחכות שבוע לטכנאי.</p>
+            <h4>התאמה אישית, לא מכירה אוטומטית</h4>
+            <p>לפני כל המלצה — שואלים, מבינים ומתאימים. לא מוכרים מה שמחסן.</p>
           </div>
         </div>
         <div class="why-item reveal" style="transition-delay:0.1s">
-          <div class="why-check">🏆</div>
+          <div class="why-check">🔩</div>
           <div class="why-text">
-            <h4>ניסיון רב שנים</h4>
-            <p>מאות לקוחות מרוצים ברחבי רמת גן, ת"א והמרכז.</p>
+            <h4>הבנה הנדסית ומעשית</h4>
+            <p>ניסיון אמיתי בתקלות מורכבות ופתרונות מיוחדים — מקומות שאחרים לא פותרים.</p>
           </div>
         </div>
         <div class="why-item reveal" style="transition-delay:0.2s">
-          <div class="why-check">✅</div>
+          <div class="why-check">🏛️</div>
           <div class="why-text">
-            <h4>תעודת כשרות לשבת</h4>
-            <p>מורשים ע"י "משמרת השבת" לתיקון והתקנת מערכות שבת.</p>
+            <h4>בית וגם מוסדות</h4>
+            <p>ניסיון עשיר בבתים, בבתי כנסת, בעסקים ובמוסדות ציבוריים — לכל אחד הפתרון שלו.</p>
           </div>
         </div>
         <div class="why-item reveal" style="transition-delay:0.3s">
+          <div class="why-check">✡️</div>
+          <div class="why-text">
+            <h4>התמחות בשבת מתוך הבנה אמיתית</h4>
+            <p>לא רק "יש אישור" — אלא הבנה עמוקה של הדרישות ההלכתיות ויישומן הטכני הנכון.</p>
+          </div>
+        </div>
+        <div class="why-item reveal" style="transition-delay:0.4s">
           <div class="why-check">💎</div>
           <div class="why-text">
-            <h4>שירות אישי ואמין</h4>
-            <p>שירות ישיר מהטכנאי — ללא מוקדים, ללא ביורוקרטיה.</p>
+            <h4>שירות ישיר מהטכנאי</h4>
+            <p>ללא מוקדים, ללא ביורוקרטיה — מדברים ישר עם האיש שמגיע אליך.</p>
           </div>
         </div>
       </div>
@@ -2371,14 +2397,40 @@
   </div>
 </section>
 
+<!-- ===== TRACKS ===== -->
+<section style="background:white; padding:70px 6%;">
+  <div style="max-width:1100px; margin:0 auto; text-align:center;">
+    <div class="section-tag">לאיזה צורך אתה מחפש?</div>
+    <h2 class="section-title">הפתרון הנכון<br><span class="teal">לכל לקוח</span></h2>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:48px;">
+      <div style="background:var(--cream); border-radius:24px; padding:36px 28px; border:2px solid rgba(43,188,200,0.15); transition:all 0.3s ease; cursor:default;" onmouseenter="this.style.borderColor='var(--teal)'; this.style.transform='translateY(-6px)';" onmouseleave="this.style.borderColor='rgba(43,188,200,0.15)'; this.style.transform='translateY(0)';">
+        <div style="font-size:3rem; margin-bottom:16px;">🏠</div>
+        <h3 style="font-family:'Heebo',sans-serif; font-size:1.25rem; font-weight:800; color:var(--text-dark); margin-bottom:12px;">לבית</h3>
+        <p style="font-size:0.9rem; color:var(--text-mid); line-height:1.65;">מיני-בר, מערכת סודה, מסנני מים — בהתאמה אישית לצורכי הבית שלך.</p>
+      </div>
+      <div style="background:var(--cream); border-radius:24px; padding:36px 28px; border:2px solid rgba(43,188,200,0.15); transition:all 0.3s ease; cursor:default;" onmouseenter="this.style.borderColor='var(--teal)'; this.style.transform='translateY(-6px)';" onmouseleave="this.style.borderColor='rgba(43,188,200,0.15)'; this.style.transform='translateY(0)';">
+        <div style="font-size:3rem; margin-bottom:16px;">🏛️</div>
+        <h3 style="font-family:'Heebo',sans-serif; font-size:1.25rem; font-weight:800; color:var(--text-dark); margin-bottom:12px;">למוסדות ועסקים</h3>
+        <p style="font-size:0.9rem; color:var(--text-mid); line-height:1.65;">פתרונות מותאמים לבתי כנסת, בתי ספר, עסקים ומוסדות ציבוריים.</p>
+      </div>
+      <div style="background:linear-gradient(135deg, rgba(43,188,200,0.08), rgba(43,188,200,0.04)); border-radius:24px; padding:36px 28px; border:2px solid rgba(43,188,200,0.3); transition:all 0.3s ease; cursor:default;" onmouseenter="this.style.borderColor='var(--teal)'; this.style.transform='translateY(-6px)';" onmouseleave="this.style.borderColor='rgba(43,188,200,0.3)'; this.style.transform='translateY(0)';">
+        <div style="font-size:3rem; margin-bottom:16px;">✡️</div>
+        <h3 style="font-family:'Heebo',sans-serif; font-size:1.25rem; font-weight:800; color:var(--text-dark); margin-bottom:12px;">לשבת ויום טוב</h3>
+        <p style="font-size:0.9rem; color:var(--text-mid); line-height:1.65;">מערכות עם אישור מ"משמרת השבת" — תכנון נכון מהיסוד, לא רק תווית.</p>
+        <div style="display:inline-block; background:var(--teal); color:white; font-size:0.75rem; font-weight:700; padding:4px 14px; border-radius:50px; margin-top:12px;">מומחיות ייחודית</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== REVIEWS ===== -->
 <section id="reviews">
   <div class="reviews-header reveal">
     <div class="reviews-rating">
-      <div class="rating-num">5</div>
+      <div class="rating-num">5.0</div>
       <div>
         <div class="stars">★★★★★</div>
-        <div style="font-size:0.8rem; color:var(--text-light); margin-top:2px;">מבוסס על 15 ביקורות בגוגל</div>
+        <div style="font-size:0.8rem; color:var(--text-light); margin-top:2px;">מתוך 5 | מבוסס על 14 ביקורות גוגל</div>
       </div>
     </div>
     <div class="section-tag">מה אומרים הלקוחות</div>
@@ -2552,7 +2604,7 @@
             <strong>03-6000-311</strong>
           </div>
         </a>
-        <a href="https://wa.me/972587711882?text=שלום!%20אני%20מעוניין%20בשירות" target="_blank" class="contact-method">
+        <a href="https://wa.me/97236000311?text=שלום!%20אני%20מעוניין%20בשירות" target="_blank" class="contact-method">
           <div class="contact-method-icon icon-wa">💬</div>
           <div class="contact-method-text">
             <span>וואטסאפ</span>
@@ -2628,7 +2680,7 @@
       <h4>יצירת קשר</h4>
       <ul>
         <li><a href="tel:036000311">📞 03-6000-311</a></li>
-        <li><a href="https://wa.me/972587711882" target="_blank">💬 וואטסאפ</a></li>
+        <li><a href="https://wa.me/97236000311" target="_blank">💬 וואטסאפ</a></li>
         <li><a href="#">📍 מלכי צדק, רמת גן</a></li>
       </ul>
       <div style="margin-top:20px; font-size:0.82rem; color:rgba(255,255,255,0.3);">שעות פעילות:<br>א-ה 09:00–18:00</div>
@@ -2641,8 +2693,8 @@
 
 <!-- ===== FLOATING BUTTONS ===== -->
 <div class="float-group">
-  <button class="float-btn float-bot" id="botBtn" onclick="toggleBot()" title="בוט שירות">🤖</button>
-  <a class="float-btn float-wa" href="https://wa.me/972587711882?text=שלום%20בריזה!%20אני%20צריך%20עזרה" target="_blank" title="וואטסאפ">
+  <button class="float-btn float-bot" id="botBtn" onclick="toggleBrizaChat()" title="בוט שירות">🤖</button>
+  <a class="float-btn float-wa" href="https://wa.me/97236000311?text=שלום%20משה!%20אני%20צריך%20עזרה" target="_blank" title="וואטסאפ">
     <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
     </svg>
@@ -2650,7 +2702,7 @@
 </div>
 
 <!-- ===== BOT MODAL ===== -->
-<div class="bot-modal" id="botModal">
+<div class="bot-modal" id="botModal" style="display:none !important;">
   <div class="bot-header">
     <div class="bot-header-info">
       <div class="bot-avatar">🤖</div>
@@ -3377,7 +3429,7 @@ function submitBooking() {
   const date = document.getElementById('bookDate').value;
   if (!name || !phone) { alert('אנא מלא שם וטלפון'); return; }
   const msg = `שלום! אני ${name}, מספרי ${phone}.\nאני מעוניין לקבוע תור לשירות: ${selectedService}.\nתאריך: ${date || 'גמיש'}, שעה: ${selectedTime || 'גמיש'}.`;
-  window.open(`https://wa.me/972587711882?text=${encodeURIComponent(msg)}`, '_blank');
+  window.open(`https://wa.me/97236000311?text=${encodeURIComponent(msg)}`, '_blank');
   closeBooking();
   const toast = document.getElementById('toast');
   toast.textContent = '📅 הבקשה נשלחה! נחזור אליך לאישור.';
@@ -3493,7 +3545,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const subject = document.getElementById('subject').value;
     if (!name || !phone) { alert('אנא מלא שם וטלפון לפחות'); return; }
     const msg = `שלום! שמי ${name}, מספרי ${phone}. בנושא: ${subject || 'שאלה כללית'}.`;
-    window.open(`https://wa.me/972587711882?text=${encodeURIComponent(msg)}`, '_blank');
+    window.open(`https://wa.me/97236000311?text=${encodeURIComponent(msg)}`, '_blank');
     const toast = document.getElementById('toast');
     toast.classList.add('show');
     setTimeout(() => toast.classList.remove('show'), 3500);
@@ -3593,7 +3645,7 @@ document.addEventListener('DOMContentLoaded', () => {
    CAROUSEL
    ============================================================ */
 (function() {
-  const track = document.getElementById('carouselTrack');
+  const track = document.getElementById('reviews-track');
   const dotsWrap = document.getElementById('carouselDots');
   if (!track) return;
 
@@ -3767,7 +3819,7 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
 
   <div style="text-align:center;margin-top:48px;" class="reveal">
-    <a href="https://wa.me/972587711882?text=שלום!%20ראיתי%20את%20הפורטפוליו%20ואשמח%20לשמוע%20עוד" target="_blank" class="btn-primary" style="display:inline-flex;">
+    <a href="https://wa.me/97236000311?text=שלום!%20ראיתי%20את%20הפורטפוליו%20ואשמח%20לשמוע%20עוד" target="_blank" class="btn-primary" style="display:inline-flex;">
       💬 רוצה שנעשה את זה גם אצלך?
     </a>
   </div>
@@ -3776,7 +3828,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <!-- ============================================================
      AI BOT (upgraded — powered by Claude API)
      ============================================================ -->
-<div id="aiBotModal" style="position:fixed;bottom:100px;left:32px;width:370px;max-height:580px;background:white;border-radius:24px;box-shadow:0 24px 70px rgba(0,0,0,0.18),0 0 0 1px rgba(43,188,200,0.15);z-index:400;overflow:hidden;display:flex;flex-direction:column;transform:scale(0.85) translateY(20px);opacity:0;transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);pointer-events:none;">
+<div id="aiBotModal" style="display:none !important;">
 
   <!-- Header -->
   <div style="background:linear-gradient(135deg,#1C3B3E,var(--teal-dark));padding:18px 20px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
@@ -4209,18 +4261,7 @@ renderPortfolio('all');
    ============================================================ */
 let aiBotOpen = false;
 const aiConversation = [];
-const BRIZA_SYSTEM = `אתה בוט שירות לקוחות של חברת "בריזה" — טכנאים מקצועיים למיני-בר ומערכות סודה.
-פרטי החברה:
-- טלפון: 03-6000-311
-- שירות: תיקון, התקנה ושדרוג של מיני-בר, מכשירי סודה, מים חמים ובר קיטור
-- מוסמכים ע"י "משמרת השבת" לתיקון והתקנת מיני-בר שבת
-- אזור שירות: רמת גן, תל אביב, פ"ת, בני ברק, גבעתיים, ראשון לציון ועוד
-- שעות: ימים א-ה 9:00-18:00
-- אחריות: 3 חודשים על עבודה
-- אבחון ראשוני: חינם
-- מחירים: בדרך כלל 150-450 ₪ לתיקון
-
-ענה בעברית בלבד. היה ידידותי, קצר וישיר. אם שאלה לא קשורה לשירות — הפנה בחביבות לנושא. לסיום שיחה תמיד הזמן ליצור קשר.`;
+// BRIZA_SYSTEM defined below in chatbot script
 
 function toggleAIBot() {
   // Close old bot if open
@@ -4236,15 +4277,6 @@ function toggleAIBot() {
     }, 300);
   }
 }
-
-// Override old bot button
-document.addEventListener('DOMContentLoaded', () => {
-  const oldBotBtn = document.getElementById('botBtn');
-  if (oldBotBtn) {
-    oldBotBtn.textContent = '🤖';
-    oldBotBtn.onclick = toggleAIBot;
-  }
-});
 
 function handleAIKey(e) {
   if (e.key === 'Enter' && !e.shiftKey) {
@@ -4802,12 +4834,272 @@ function initDynamicCarousel() {
 
     function updatePosition() {
         const cardWidth = cards[0].offsetWidth + 20; // רוחב כרטיס + מרווח
-        track.style.transform = translateX(-${index * cardWidth}px);
+        track.style.transform = `translateX(-${index * cardWidth}px)`;
     }
 }
 
 // הפעלה כעבור שנייה כדי לוודא שהביקורות כבר הוזרקו
 setTimeout(initDynamicCarousel, 1000);
+</script>
+
+<!-- ===== AI CHATBOT ===== -->
+<style>
+  #chatWindow {
+    position: fixed;
+    bottom: 180px; left: 16px;
+    width: 370px; max-height: 580px;
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(43,188,200,0.18), 0 4px 20px rgba(0,0,0,0.08);
+    display: flex; flex-direction: column;
+    overflow: hidden;
+    z-index: 1500;
+    transform: translateY(20px) scale(0.95);
+    opacity: 0; pointer-events: none;
+    transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  #chatWindow.chat-visible { transform: translateY(0) scale(1); opacity: 1; pointer-events: all; }
+  .chat-header { background: linear-gradient(135deg, var(--teal), var(--teal-dark)); padding: 18px 20px; display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+  .chat-avatar { width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.25); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border: 2px solid rgba(255,255,255,0.4); flex-shrink: 0; }
+  .chat-name { font-family: 'Heebo',sans-serif; font-weight: 800; font-size: 1rem; color: white; line-height: 1.2; }
+  .chat-status { font-size: 0.75rem; color: rgba(255,255,255,0.8); display: flex; align-items: center; gap: 5px; margin-top: 2px; }
+  .chat-status-dot { width: 7px; height: 7px; background: #4ade80; border-radius: 50%; animation: chatPulse 2s infinite; }
+  @keyframes chatPulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+  .chat-messages { flex: 1; overflow-y: auto; padding: 20px 16px; display: flex; flex-direction: column; gap: 12px; background: #f8fcfd; }
+  .chat-messages::-webkit-scrollbar { width: 4px; }
+  .chat-messages::-webkit-scrollbar-thumb { background: var(--teal-pale); border-radius: 2px; }
+  .chat-msg { display: flex; flex-direction: column; max-width: 85%; animation: chatMsgIn 0.3s cubic-bezier(0.34,1.56,0.64,1); }
+  @keyframes chatMsgIn { from{opacity:0;transform:translateY(10px) scale(0.96)} to{opacity:1;transform:translateY(0) scale(1)} }
+  .chat-msg.bot { align-self: flex-end; align-items: flex-end; }
+  .chat-msg.user { align-self: flex-start; align-items: flex-start; }
+  .chat-bubble { padding: 12px 16px; border-radius: 18px; font-size: 0.92rem; line-height: 1.6; word-break: break-word; }
+  .chat-msg.bot .chat-bubble { background: white; color: var(--text-dark); border-radius: 18px 18px 4px 18px; box-shadow: 0 2px 12px rgba(43,188,200,0.1); border: 1px solid rgba(43,188,200,0.12); }
+  .chat-msg.user .chat-bubble { background: linear-gradient(135deg, var(--teal), var(--teal-dark)); color: white; border-radius: 18px 18px 18px 4px; }
+  .chat-msg-time { font-size: 0.68rem; color: var(--text-light); margin-top: 4px; padding: 0 4px; }
+  .chat-typing { display: flex; gap: 4px; padding: 14px 16px; background: white; border-radius: 18px 18px 4px 18px; box-shadow: 0 2px 12px rgba(43,188,200,0.1); border: 1px solid rgba(43,188,200,0.12); width: fit-content; align-self: flex-end; animation: chatMsgIn 0.3s ease; }
+  .chat-typing-dot { width: 7px; height: 7px; background: var(--teal-light); border-radius: 50%; animation: chatBounce 1.2s infinite; }
+  .chat-typing-dot:nth-child(2){animation-delay:.2s} .chat-typing-dot:nth-child(3){animation-delay:.4s}
+  @keyframes chatBounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-6px)} }
+  .chat-quick-replies { display: flex; flex-wrap: wrap; gap: 8px; padding: 4px 0; align-self: flex-end; }
+  .chat-qr { background: white; border: 1.5px solid rgba(43,188,200,0.35); color: var(--teal-dark); padding: 7px 14px; border-radius: 50px; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: 'Assistant',sans-serif; white-space: nowrap; }
+  .chat-qr:hover { background: var(--teal); border-color: var(--teal); color: white; }
+  .chat-wa-btn { display: flex; align-items: center; gap: 10px; background: linear-gradient(135deg,#25d366,#128c7e); color: white; padding: 11px 16px; border-radius: 14px; font-size: 0.88rem; font-weight: 700; text-decoration: none; margin-top: 4px; transition: all 0.2s; width: fit-content; align-self: flex-end; }
+  .chat-wa-btn:hover { transform: translateY(-2px); opacity: 0.92; }
+  .chat-input-area { padding: 14px 16px; border-top: 1px solid rgba(43,188,200,0.12); display: flex; gap: 10px; align-items: flex-end; background: white; flex-shrink: 0; }
+  #chatInput { flex: 1; border: 1.5px solid rgba(43,188,200,0.25); border-radius: 14px; padding: 10px 14px; font-family: 'Assistant',sans-serif; font-size: 0.92rem; color: var(--text-dark); background: #f8fcfd; resize: none; outline: none; max-height: 100px; line-height: 1.5; direction: rtl; transition: border-color 0.2s; }
+  #chatInput:focus { border-color: var(--teal); background: white; }
+  #chatInput::placeholder { color: var(--text-light); }
+  #chatSendBtn { width: 42px; height: 42px; border-radius: 12px; background: linear-gradient(135deg,var(--teal),var(--teal-dark)); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; flex-shrink: 0; box-shadow: 0 4px 12px rgba(43,188,200,0.3); }
+  #chatSendBtn:hover { transform: scale(1.08); }
+  #chatSendBtn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+  @media (max-width: 430px) { #chatWindow { width: calc(100vw - 24px); left: 12px; bottom: 164px; } }
+</style>
+
+<div id="chatWindow">
+  <div class="chat-header">
+    <div class="chat-avatar">🤖</div>
+    <div>
+      <div class="chat-name">עוזר בריזה</div>
+      <div class="chat-status"><div class="chat-status-dot"></div>זמין עכשיו לענות</div>
+    </div>
+  </div>
+  <div class="chat-messages" id="chatMsgs">
+    <div class="chat-msg bot">
+      <div class="chat-bubble">היי! 👋 אני העוזר של בריזה.<br>שאל אותי על מיני-בר, סודה, שבת, תיקונים, מחירים ועוד.</div>
+      <div class="chat-msg-time">עכשיו</div>
+    </div>
+    <div class="chat-msg bot">
+      <div class="chat-quick-replies">
+        <button class="chat-qr" onclick="brizaQuick('מה המחיר לתיקון מיני-בר?')">💰 מחיר תיקון</button>
+        <button class="chat-qr" onclick="brizaQuick('מה זה מיני-בר שבת?')">✡️ מיני-בר שבת</button>
+        <button class="chat-qr" onclick="brizaQuick('באיזה אזורים אתם עובדים?')">📍 אזור שירות</button>
+        <button class="chat-qr" onclick="brizaQuick('אני רוצה לקבוע תור')">📅 לקבוע תור</button>
+      </div>
+    </div>
+  </div>
+  <div class="chat-input-area">
+    <button id="chatSendBtn" onclick="brizaSend()" aria-label="שלח">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+    <textarea id="chatInput" placeholder="שאל אותי כל שאלה..." rows="1"
+      onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();brizaSend();}"
+      oninput="this.style.height='auto';this.style.height=Math.min(this.scrollHeight,100)+'px'"></textarea>
+  </div>
+</div>
+
+<script>
+  var chatOpen = false, chatLoading = false;
+  var chatHistory = [];
+
+  // ===== בוט מבוסס כללים — ללא API =====
+  var BRIZA_RULES = [
+    {
+      keys: ['שלום','היי','הי','בוקר','ערב','מה שלומך','מה נשמע'],
+      reply: 'היי! 😊 אני הבוט של בריזה, כאן לענות על כל שאלה.\nשאל אותי על מיני-בר, מערכות סודה, שבת, תיקונים, מחירים ועוד!'
+    },
+    {
+      keys: ['מחיר','עלות','כמה עולה','כמה זה','עולה','תעריף','תשלום'],
+      reply: 'מחירים בבריזה 💰\n\n• אבחון ראשוני — חינם!\n• תיקון מיני-בר — 150–450 ₪ (תלוי בתקלה)\n• התקנה חדשה — לפי סוג המערכת\n• אחריות: 3 חודשים על עבודה\n\nלהצעת מחיר מדויקת — צלצל: 03-6000-311 📞'
+    },
+    {
+      keys: ['שבת','שבתי','כשר','משמרת השבת','spirit touch'],
+      reply: 'מיני-בר שבת ✡️\n\nבריזה מוסמכת ע"י "משמרת השבת" להתקנה ותיקון מיני-בר שבת.\nהסמכה בתוקף עד 26.10.2026.\n\nמוצר השבת שלנו: Spirit Touch Bar Shabbat\n\nלפרטים ותיאום — 03-6000-311 📞'
+    },
+    {
+      keys: ['תיקון','מתקלקל','תקלה','שבור','לא עובד','מקולקל','מקרר','קירור','חימום'],
+      reply: 'תיקון מיני-בר 🔧\n\nמגיעים ביום הפנייה לכל תקלה:\n• לא מקרר / לא מחמם\n• רעשים חריגים\n• בעיות חשמל\n• נזילות\n\nאבחון ראשוני חינם! לתיאום טכנאי — 03-6000-311 📞'
+    },
+    {
+      keys: ['סודה','מכשיר סודה','גז','ספארקל','סיפון','מי סודה'],
+      reply: 'מערכות סודה 🫧\n\nאנו מתקנים ומשדרגים את כל סוגי מכשירי הסודה:\n• טעינת גז\n• תיקון תקלות\n• התקנה למטבח ביתי / מוסדי\n\nלתיאום — 03-6000-311 📞'
+    },
+    {
+      keys: ['התקנה','להתקין','חדש','רכשתי','קניתי','מיני בר חדש','להכניס'],
+      reply: 'התקנת מיני-בר חדש 🔌\n\nמתקינים כל סוג מיני-בר — ביתי, עסקי ומוסדי.\nכולל חיבור מים, חשמל ובדיקת תקינות מלאה.\n\nמגיעים ביום הפנייה! לתיאום — 03-6000-311 📞'
+    },
+    {
+      keys: ['אזור','איפה','מגיעים','מרחק','עיר','כתובת','רמת גן','תל אביב','פתח תקווה','בני ברק','גבעתיים','ראשון'],
+      reply: 'אזור השירות שלנו 📍\n\nמכסים את כל גוש דן והסביבה:\n✅ תל אביב\n✅ רמת גן\n✅ פתח תקווה\n✅ בני ברק\n✅ גבעתיים\n✅ ראשון לציון\n✅ השפלה והשרון\n\nלבדיקה ספציפית — 03-6000-311 📞'
+    },
+    {
+      keys: ['שעות','פתוח','זמין','מתי','זמן','לוח זמנים'],
+      reply: 'שעות פעילות ⏰\n\nימים א–ה: 09:00–18:00\nשישי: 08:00–12:00\n\nמגיעים ביום הפנייה!\nלתיאום — 03-6000-311 📞'
+    },
+    {
+      keys: ['אחריות','אחרי תיקון','ביטחון','ערבות'],
+      reply: 'אחריות בבריזה 🛡️\n\n• 3 חודשים אחריות על עבודה\n• אחריות יצרן על חלקים\n• אבחון חינם לפני כל תיקון\n\nשאלות? — 03-6000-311 📞'
+    },
+    {
+      keys: ['תור','לקבוע','להזמין','פגישה','ביקור','לבוא'],
+      reply: 'לקביעת תור 📅\n\nהדרך הכי מהירה:\n📞 טלפון: 03-6000-311\n💬 וואטסאפ: 03-6000-311\n\nמגיעים ביום הפנייה!'
+    },
+    {
+      keys: ['טלפון','מספר','ליצור קשר','וואטסאפ','וצאפ','ווצאפ','פנייה','קשר'],
+      reply: 'יצירת קשר עם בריזה 📱\n\n📞 טלפון: 03-6000-311\n💬 וואטסאפ: 03-6000-311\n\nשעות פעילות: א–ה 09:00–18:00 | שישי 08:00–12:00'
+    },
+    {
+      keys: ['מים חמים','קיטור','בר קיטור','בויילר'],
+      reply: 'מערכות מים חמים וקיטור ☕\n\nמתקינים ומתקנים:\n• ברי קיטור\n• מערכות מים חמים מיידיים\n• חיבורים למטבח ביתי ומוסדי\n\nלפרטים — 03-6000-311 📞'
+    },
+    {
+      keys: ['מסנן','פילטר','סינון','מים נקיים'],
+      reply: 'מסנני מים 💧\n\nמתקינים מסנני מים מקצועיים לכל סוג מיני-בר.\n\nלפרטים ומחירים — 03-6000-311 📞'
+    }
+  ];
+
+  function getBrizaReply(text) {
+    var t = text.toLowerCase();
+    for (var i = 0; i < BRIZA_RULES.length; i++) {
+      var rule = BRIZA_RULES[i];
+      for (var j = 0; j < rule.keys.length; j++) {
+        if (t.indexOf(rule.keys[j]) !== -1) return rule.reply;
+      }
+    }
+    return 'תודה על פנייתך! 😊\nלא הצלחתי להבין בדיוק מה תצטרך — הכי מהיר זה ישירות איתנו:\n\n📞 03-6000-311\n💬 וואטסאפ: 03-6000-311\n\nנשמח לעזור!';
+  }
+
+  function toggleBrizaChat() {
+    chatOpen = !chatOpen;
+    var win = document.getElementById('chatWindow');
+    if (chatOpen) {
+      win.classList.add('chat-visible');
+      chatLoading = false;
+      document.getElementById('chatSendBtn').disabled = false;
+    } else {
+      win.classList.remove('chat-visible');
+    }
+    var badge = document.querySelector('.chat-badge');
+    if (badge) badge.style.display = 'none';
+    if (chatOpen) setTimeout(function(){ var inp = document.getElementById('chatInput'); if(inp) inp.focus(); }, 400);
+  }
+
+  // סגירה בלחיצה מחוץ לחלונית
+  document.addEventListener('mousedown', function(e) {
+    if (!chatOpen) return;
+    var win = document.getElementById('chatWindow');
+    var btn = document.getElementById('botBtn');
+    if (win && !win.contains(e.target) && btn && !btn.contains(e.target)) {
+      chatOpen = false;
+      win.classList.remove('chat-visible');
+    }
+  });
+
+  var WA_ICON = '<svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.025.507 3.929 1.399 5.594L0 24l6.59-1.38A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.002-1.368l-.36-.214-3.713.778.793-3.617-.234-.372A9.795 9.795 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>';
+
+  function buildWABtn() {
+    var userMsgs = chatHistory.filter(function(m){ return m.role === 'user'; }).map(function(m){ return m.content; });
+    var waText = 'היי משה, אשמח לעזרה!';
+    if (userMsgs.length === 1) waText = 'היי משה, ' + userMsgs[0];
+    if (userMsgs.length >= 2) waText = 'היי משה! דיברתי עם הבוט שלך. לאחרונה שאלתי: "' + userMsgs[userMsgs.length-1] + '". אשמח להמשיך ישירות איתך.';
+    return '<a href="https://wa.me/97236000311?text=' + encodeURIComponent(waText) + '" target="_blank" class="chat-wa-btn">' + WA_ICON + ' המשך עם משה בוואטסאפ</a>';
+  }
+
+  function brizaQuick(text) {
+    document.getElementById('chatInput').value = text;
+    brizaSend();
+  }
+
+  function brizaSend() {
+    if (chatLoading) return;
+    var input = document.getElementById('chatInput');
+    var text = input.value.trim();
+    if (!text) return;
+    input.value = ''; input.style.height = 'auto';
+    document.querySelectorAll('.chat-quick-replies').forEach(function(el){ el.remove(); });
+    appendChatMsg(text, 'user', false);
+    chatHistory.push({ role: 'user', content: text });
+    chatLoading = true;
+    document.getElementById('chatSendBtn').disabled = true;
+    showChatTyping();
+
+    // תגובה מקומית — ללא API
+    setTimeout(function() {
+      removeChatTyping();
+      var reply = getBrizaReply(text);
+      chatHistory.push({ role: 'assistant', content: reply });
+      var waKw = ['תור','לקבוע','להתקין','התקנה','מחיר','עלות','כמה עולה','לתקן','תיקון','להגיע','זמין','לבוא'];
+      var showWA = chatHistory.filter(function(m){ return m.role==='user'; }).length >= 3 || waKw.some(function(k){ return text.includes(k); });
+      appendChatMsg(reply, 'bot', showWA);
+      chatLoading = false;
+      document.getElementById('chatSendBtn').disabled = false;
+    }, 700);
+  }
+
+  function appendChatMsg(text, role, withWA) {
+    var msgs = document.getElementById('chatMsgs');
+    var now = new Date().toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' });
+    var w = document.createElement('div');
+    w.className = 'chat-msg ' + role;
+    var bubble = document.createElement('div');
+    bubble.className = 'chat-bubble';
+    bubble.innerHTML = text.replace(/\n/g,'<br>');
+    var time = document.createElement('div');
+    time.className = 'chat-msg-time';
+    time.textContent = now;
+    w.appendChild(bubble);
+    w.appendChild(time);
+    msgs.appendChild(w);
+    if (withWA) {
+      var ww = document.createElement('div');
+      ww.className = 'chat-msg bot';
+      ww.innerHTML = buildWABtn();
+      msgs.appendChild(ww);
+    }
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function showChatTyping() {
+    var msgs = document.getElementById('chatMsgs');
+    var t = document.createElement('div');
+    t.id = 'chatTyping'; t.className = 'chat-typing';
+    t.innerHTML = '<div class="chat-typing-dot"></div><div class="chat-typing-dot"></div><div class="chat-typing-dot"></div>';
+    msgs.appendChild(t); msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function removeChatTyping() {
+    var t = document.getElementById('chatTyping');
+    if (t) t.remove();
+  }
 </script>
 </body>
 </html>
